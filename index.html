@@ -1027,7 +1027,25 @@ footer{background:var(--ink);color:var(--cream);padding:28px 52px;display:flex;j
           <span class="ct-l">Location</span><span class="ct-v">Greater Noida, India</span>
         </div>
       </div>
-      <a href="mailto:infoehtesham7886@gmail.com" class="btn-s" style="display:inline-block">Send a message →</a>
+
+<form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/success">
+
+<input type="hidden" name="form-name" value="contact">
+
+<p style="display:none">
+<label>Don’t fill this out: <input name="bot-field"></label>
+</p>
+
+<input type="text" name="name" placeholder="Your name" required>
+
+<input type="email" name="email" placeholder="Your email" required>
+
+<textarea name="message" placeholder="Your message" required></textarea>
+
+<button type="submit" class="btn-s">Send Message →</button>
+
+</form>
+
     </div>
   </div>
 </section>
