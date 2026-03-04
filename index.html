@@ -343,9 +343,9 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:24px 52p
 
   <!-- LEFT: photo + stats -->
   <div class="hero-left">
-    <div class="photo-zone" id="photoZone" onclick="document.getElementById('photo-input').click()">
-      <img id="profileImg" alt="Mohammad Ehtesham">
-      <div class="photo-ph" id="photoPH">
+    <div class="photo-zone has-photo" id="photoZone" onclick="document.getElementById('photo-input').click()">
+      <img id="profileImg" alt="Mohammad Ehtesham" src="photo.jpg" style="display:block;" onerror="this.style.display='none';document.getElementById('photoPH').style.display='flex';document.getElementById('photoZone').classList.remove('has-photo');">
+      <div class="photo-ph" id="photoPH" style="display:none;">
         <div class="photo-icon">
           <svg width="30" height="34" viewBox="0 0 30 34" fill="none">
             <circle cx="15" cy="10" r="7.5" stroke="#6B7A9A" stroke-width="1.5" fill="none"/>
