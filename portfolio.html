@@ -1,0 +1,1131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mohammad Ehtesham — Backend & AI Engineer</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=IBM+Plex+Mono:wght@300;400;500&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+/* ════════════════════════════════
+   BASE
+════════════════════════════════ */
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --cream:#F3EFE6;
+  --ink:#0E0D0B;
+  --warm:#7A7060;
+  --rule:#D8D2C4;
+  --fire:#D94F1E;
+  --paper:#FAF8F4;
+  --card:#EEEAE0;
+}
+html{scroll-behavior:smooth;}
+body{background:var(--cream);color:var(--ink);font-family:'Instrument Sans',sans-serif;font-weight:400;-webkit-font-smoothing:antialiased;overflow-x:hidden;}
+::-webkit-scrollbar{width:3px;}
+::-webkit-scrollbar-thumb{background:var(--fire);}
+
+/* ════════════════════════════════
+   TOP BAND
+════════════════════════════════ */
+.topband{background:var(--ink);color:var(--cream);padding:0 52px;height:42px;display:flex;justify-content:space-between;align-items:center;}
+.tb-l{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;opacity:.5;}
+.tb-r{display:flex;gap:28px;}
+.tb-r a{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--cream);text-decoration:none;opacity:.45;transition:opacity .2s;}
+.tb-r a:hover{opacity:1;}
+
+/* Marquee */
+.marquee{background:var(--fire);height:34px;overflow:hidden;display:flex;align-items:center;}
+.mq-track{display:flex;animation:mq 28s linear infinite;white-space:nowrap;}
+.mq-track span{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.85);padding:0 24px;}
+.mq-track .dot{color:rgba(255,255,255,.3);padding:0 4px;}
+@keyframes mq{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+/* ════════════════════════════════
+   NAV
+════════════════════════════════ */
+nav{border-bottom:1px solid var(--rule);padding:0 52px;height:60px;display:flex;justify-content:space-between;align-items:center;position:sticky;top:0;background:rgba(243,239,230,.96);backdrop-filter:blur(14px);z-index:200;transition:box-shadow .3s;}
+nav.scrolled{box-shadow:0 2px 24px rgba(0,0,0,.07);}
+.nav-logo{font-family:'Playfair Display',serif;font-weight:700;font-size:18px;letter-spacing:-.01em;text-decoration:none;color:var(--ink);}
+.nav-logo em{font-style:italic;color:var(--fire);}
+.nav-ul{display:flex;gap:34px;list-style:none;align-items:center;}
+.nav-ul a{font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--warm);text-decoration:none;transition:color .15s;}
+.nav-ul a:hover{color:var(--ink);}
+.nav-hire{background:var(--ink)!important;color:var(--cream)!important;padding:8px 20px;transition:background .2s!important;}
+.nav-hire:hover{background:var(--fire)!important;}
+
+/* ════════════════════════════════
+   HERO
+════════════════════════════════ */
+#hero{display:grid;grid-template-columns:1fr 420px;min-height:calc(100vh - 136px);border-bottom:1px solid var(--rule);}
+
+.hero-left{padding:72px 64px 72px 52px;border-right:1px solid var(--rule);display:flex;flex-direction:column;justify-content:space-between;}
+
+.eyebrow{display:flex;align-items:center;gap:10px;font-family:'IBM Plex Mono',monospace;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--warm);margin-bottom:40px;}
+.live-dot{width:7px;height:7px;background:var(--fire);border-radius:50%;flex-shrink:0;animation:blink 2s infinite;}
+@keyframes blink{0%,100%{opacity:1;transform:scale(1);}50%{opacity:.25;transform:scale(.6);}}
+
+.hero-name{font-family:'Playfair Display',serif;font-weight:900;font-size:clamp(60px,8vw,118px);line-height:.88;letter-spacing:-.03em;}
+.hero-name .ital{display:block;font-style:italic;font-weight:400;color:var(--warm);}
+
+.hero-divider{width:100%;height:1px;background:var(--rule);margin:52px 0;}
+
+.hero-btm{display:grid;grid-template-columns:1fr auto;gap:48px;align-items:end;}
+.hero-bio{font-size:15px;line-height:1.78;color:var(--warm);max-width:460px;}
+.hero-bio strong{color:var(--ink);font-weight:600;}
+
+.hero-ctas{display:flex;flex-direction:column;gap:10px;}
+.btn-s{display:inline-block;background:var(--ink);color:var(--cream);font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:13px 30px;text-decoration:none;transition:background .2s;text-align:center;white-space:nowrap;}
+.btn-s:hover{background:var(--fire);}
+.btn-g{display:inline-block;border:1px solid var(--rule);color:var(--warm);font-family:'IBM Plex Mono',monospace;font-size:12px;letter-spacing:.08em;text-transform:uppercase;padding:12px 30px;text-decoration:none;transition:all .2s;text-align:center;}
+.btn-g:hover{border-color:var(--ink);color:var(--ink);}
+
+/* ── HERO RIGHT (Profile + Stats) ── */
+.hero-right{display:flex;flex-direction:column;}
+
+/* PROFILE PHOTO */
+.profile-wrap{flex:1;position:relative;overflow:hidden;background:var(--card);border-bottom:1px solid var(--rule);min-height:360px;cursor:pointer;}
+.profile-wrap:hover .profile-overlay{opacity:1;}
+
+#profileImg{width:100%;height:100%;object-fit:cover;object-position:top center;display:none;transition:transform .5s;}
+.profile-wrap:hover #profileImg{transform:scale(1.03);}
+
+.profile-placeholder{
+  position:absolute;inset:0;
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:16px;
+  border:2px dashed var(--rule);transition:border-color .2s;
+}
+.profile-wrap:hover .profile-placeholder{border-color:var(--fire);}
+.profile-placeholder svg{opacity:.35;transition:opacity .2s;}
+.profile-wrap:hover .profile-placeholder svg{opacity:.6;}
+
+.ph-text{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--warm);text-align:center;line-height:1.7;}
+.ph-btn{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;background:var(--ink);color:var(--cream);border:none;padding:9px 20px;cursor:pointer;transition:background .2s;}
+.ph-btn:hover{background:var(--fire);}
+
+.profile-overlay{position:absolute;bottom:0;left:0;right:0;background:linear-gradient(transparent,rgba(14,13,11,.5));padding:20px;opacity:0;transition:opacity .3s;pointer-events:none;}
+.profile-overlay-text{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--cream);opacity:.8;}
+
+#photo-input{display:none;}
+
+/* Stats */
+.hero-stats{display:grid;grid-template-columns:1fr 1fr;}
+.hstat{padding:22px 26px;border-right:1px solid var(--rule);border-bottom:1px solid var(--rule);}
+.hstat:nth-child(even){border-right:none;}
+.hstat:nth-child(3),.hstat:nth-child(4){border-bottom:none;}
+.hstat-num{font-family:'Playfair Display',serif;font-weight:900;font-size:36px;line-height:1;letter-spacing:-.03em;}
+.hstat-num sup{font-size:15px;color:var(--fire);vertical-align:super;}
+.hstat-lbl{font-family:'IBM Plex Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:.1em;color:var(--warm);margin-top:4px;line-height:1.5;}
+
+/* ════════════════════════════════
+   SECTION SHELL
+════════════════════════════════ */
+.sw{padding:88px 52px;border-bottom:1px solid var(--rule);}
+.sh{display:grid;grid-template-columns:120px 1fr;gap:52px;margin-bottom:68px;}
+.si{font-family:'IBM Plex Mono',monospace;font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--warm);padding-top:6px;}
+.st{font-family:'Playfair Display',serif;font-weight:900;font-size:clamp(38px,5vw,68px);line-height:.9;letter-spacing:-.03em;}
+.st em{display:block;font-style:italic;font-weight:400;color:var(--warm);}
+
+/* ════════════════════════════════
+   SERVICES
+════════════════════════════════ */
+#services{background:var(--paper);}
+
+.srv-row{display:grid;grid-template-columns:120px 220px 1fr;gap:52px;padding:44px 0;border-top:1px solid var(--rule);position:relative;cursor:default;}
+.srv-row::after{content:'';position:absolute;left:-52px;right:-52px;top:0;bottom:0;background:transparent;transition:background .3s;pointer-events:none;}
+.srv-row:hover::after{background:rgba(217,79,30,.028);}
+.srv-row:hover .srv-name{color:var(--fire);}
+.srv-row:hover .srv-vis svg .animated-line{stroke-dashoffset:0!important;}
+.srv-row:hover .srv-vis svg .pulse-circle{animation-play-state:running;}
+
+.srv-n{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--warm);letter-spacing:.1em;padding-top:4px;position:relative;z-index:1;}
+.srv-name-col{position:relative;z-index:1;}
+.srv-name{font-family:'Playfair Display',serif;font-weight:700;font-size:26px;letter-spacing:-.02em;line-height:1.1;transition:color .2s;}
+
+/* SVG illustration area */
+.srv-right{position:relative;z-index:1;}
+.srv-vis{width:100%;height:140px;margin-bottom:16px;overflow:hidden;border:1px solid var(--rule);background:var(--card);}
+.srv-vis svg{width:100%;height:100%;}
+
+.srv-body{font-size:13.5px;line-height:1.72;color:var(--warm);}
+.srv-tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:14px;}
+.stag{font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.07em;text-transform:uppercase;border:1px solid var(--rule);color:var(--warm);padding:3px 9px;transition:all .15s;}
+.srv-row:hover .stag{border-color:rgba(217,79,30,.4);color:var(--fire);}
+
+/* ════════════════════════════════
+   PROJECTS
+════════════════════════════════ */
+#projects{background:var(--ink);color:var(--cream);}
+#projects .si{color:#3a3a3a;}
+#projects .st{color:var(--cream);}
+#projects .st em{color:#444;}
+
+/* Featured */
+.proj-feat{border:1px solid #1d1d1d;margin-bottom:2px;cursor:pointer;transition:border-color .25s;overflow:hidden;}
+.proj-feat:hover{border-color:#2e2e2e;}
+.proj-feat:hover .pf-name{color:var(--fire);}
+.proj-feat:hover .pf-vis svg{transform:scale(1.03);}
+.proj-feat:hover .gh-link{opacity:1;color:var(--fire);}
+
+.pf-top{display:grid;grid-template-columns:1fr 320px;}
+.pf-text{padding:40px 44px;}
+.pf-badge{font-family:'IBM Plex Mono',monospace;font-size:9px;letter-spacing:.15em;text-transform:uppercase;color:var(--fire);margin-bottom:12px;display:block;}
+.pf-name{font-family:'Playfair Display',serif;font-weight:700;font-size:36px;letter-spacing:-.02em;line-height:1.05;transition:color .2s;color:var(--cream);margin-bottom:16px;}
+.pf-desc{font-size:13.5px;line-height:1.72;color:#888;max-width:520px;margin-bottom:20px;}
+.pf-stack{display:flex;flex-wrap:wrap;gap:6px;}
+.ptag{font-family:'IBM Plex Mono',monospace;font-size:9.5px;text-transform:uppercase;letter-spacing:.06em;border:1px solid #242424;color:#666;padding:3px 9px;transition:border-color .15s,color .15s;}
+.proj-feat:hover .ptag{border-color:#333;color:#888;}
+
+/* SVG panel for featured */
+.pf-vis{height:100%;min-height:280px;background:#0a0a0a;border-left:1px solid #1d1d1d;overflow:hidden;transition:all .3s;}
+.pf-vis svg{width:100%;height:100%;transition:transform .6s ease;}
+
+.pf-bot{padding:18px 44px;border-top:1px solid #1a1a1a;display:flex;justify-content:space-between;align-items:center;}
+.gh-link{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--cream);text-decoration:none;letter-spacing:.06em;opacity:.3;transition:opacity .2s,color .2s;white-space:nowrap;}
+
+/* Regular project rows */
+.proj-row{display:grid;grid-template-columns:100px 180px 1fr auto;gap:40px;padding:36px 0;border-top:1px solid #1a1a1a;cursor:pointer;transition:background .2s;align-items:start;}
+.proj-row:hover{background:#0d0d0d;}
+.proj-row:hover .pr-name{color:var(--fire);}
+.proj-row:hover .gh-link{opacity:1;color:var(--fire);}
+
+.pr-meta{padding-top:2px;}
+.pr-num{font-family:'IBM Plex Mono',monospace;font-size:10px;color:#3a3a3a;letter-spacing:.1em;display:block;margin-bottom:6px;}
+.pr-lang{font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:var(--fire);text-transform:uppercase;letter-spacing:.1em;}
+
+.pr-vis{height:100px;background:#0a0a0a;border:1px solid #1d1d1d;overflow:hidden;transition:border-color .2s;}
+.proj-row:hover .pr-vis{border-color:#333;}
+.pr-vis svg{width:100%;height:100%;transition:transform .5s ease;}
+.proj-row:hover .pr-vis svg{transform:scale(1.08);}
+
+.pr-name{font-family:'Playfair Display',serif;font-weight:700;font-size:24px;letter-spacing:-.02em;margin-bottom:8px;transition:color .2s;color:var(--cream);}
+.pr-desc{font-size:13px;color:#777;line-height:1.65;margin-bottom:14px;}
+.pr-stack{display:flex;flex-wrap:wrap;gap:5px;}
+
+/* ════════════════════════════════
+   SKILLS
+════════════════════════════════ */
+#skills{background:var(--cream);}
+.sk-grid{display:grid;grid-template-columns:1fr 1fr;gap:88px;}
+.sk-title{font-family:'IBM Plex Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.15em;color:var(--warm);padding-bottom:14px;border-bottom:1px solid var(--rule);}
+.sk-line{display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid var(--rule);}
+.sk-line:last-child{border-bottom:none;}
+.sln{font-size:14px;color:var(--ink);font-weight:500;}
+.sll{font-family:'IBM Plex Mono',monospace;font-size:9.5px;text-transform:uppercase;letter-spacing:.1em;color:var(--warm);}
+.sll.hi{color:var(--fire);font-weight:500;}
+
+.cert-list{display:flex;flex-direction:column;}
+.cert-item{display:flex;justify-content:space-between;align-items:baseline;gap:20px;padding:12px 0;border-bottom:1px solid var(--rule);}
+.cert-item:last-child{border-bottom:none;}
+.cin{font-size:13px;color:var(--ink);font-weight:500;line-height:1.4;}
+.cio{font-family:'IBM Plex Mono',monospace;font-size:9px;color:var(--warm);white-space:nowrap;text-transform:uppercase;letter-spacing:.07em;}
+
+/* ════════════════════════════════
+   EXPERIENCE
+════════════════════════════════ */
+#experience{background:var(--paper);}
+
+/* SVG illustration banner */
+.exp-banner{width:100%;height:160px;background:var(--ink);overflow:hidden;margin-bottom:0;border:1px solid var(--rule);}
+.exp-banner svg{width:100%;height:100%;}
+
+.exp-row{display:grid;grid-template-columns:120px 220px 1fr;gap:52px;padding:48px 0;border-top:1px solid var(--rule);}
+.exp-yr{font-family:'IBM Plex Mono',monospace;font-size:11px;color:var(--warm);letter-spacing:.08em;padding-top:4px;}
+.exp-co{font-family:'Playfair Display',serif;font-size:22px;font-weight:700;letter-spacing:-.01em;line-height:1.15;margin-bottom:7px;}
+.exp-rl{font-family:'IBM Plex Mono',monospace;font-size:9.5px;text-transform:uppercase;letter-spacing:.1em;color:var(--fire);}
+.exp-pts{list-style:none;display:flex;flex-direction:column;gap:9px;}
+.exp-pts li{font-size:13.5px;line-height:1.65;color:var(--warm);padding-left:16px;position:relative;}
+.exp-pts li::before{content:'—';position:absolute;left:0;color:var(--rule);font-size:12px;}
+
+.ach-grid{display:grid;grid-template-columns:120px 1fr;gap:52px;margin-top:68px;padding-top:68px;border-top:1px solid var(--rule);}
+.ach-lbl{font-family:'IBM Plex Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.12em;color:var(--warm);padding-top:4px;}
+.ach-items{display:flex;flex-wrap:wrap;gap:10px;}
+.ach-pill{border:1px solid var(--rule);padding:14px 20px;display:inline-flex;flex-direction:column;font-size:13px;color:var(--ink);font-weight:500;transition:border-color .2s,transform .2s;}
+.ach-pill:hover{border-color:var(--fire);transform:translateY(-2px);}
+.ach-pill span{font-family:'IBM Plex Mono',monospace;font-size:9px;text-transform:uppercase;letter-spacing:.1em;color:var(--warm);margin-top:4px;}
+
+/* ════════════════════════════════
+   CONTACT
+════════════════════════════════ */
+#contact{background:var(--cream);padding:100px 52px;}
+.ct-wrap{display:grid;grid-template-columns:1fr 420px;gap:80px;align-items:start;}
+.ct-h{font-family:'Playfair Display',serif;font-weight:900;font-size:clamp(52px,7.5vw,112px);line-height:.88;letter-spacing:-.04em;margin-bottom:52px;}
+.ct-h em{display:block;font-style:italic;font-weight:400;color:var(--warm);}
+
+/* contact SVG art */
+.ct-art{width:100%;height:260px;overflow:hidden;border:1px solid var(--rule);}
+.ct-art svg{width:100%;height:100%;}
+
+.ct-intro{font-size:14px;line-height:1.78;color:var(--warm);margin-bottom:36px;}
+.ct-items{display:flex;flex-direction:column;margin-bottom:36px;}
+.ct-item{display:flex;justify-content:space-between;align-items:baseline;gap:20px;padding:12px 0;border-bottom:1px solid var(--rule);text-decoration:none;transition:color .15s;}
+.ct-item:hover .ct-v{color:var(--fire);}
+.ct-l{font-family:'IBM Plex Mono',monospace;font-size:10px;text-transform:uppercase;letter-spacing:.1em;color:var(--warm);flex-shrink:0;}
+.ct-v{font-size:13px;color:var(--ink);font-weight:500;text-align:right;transition:color .15s;}
+
+/* ════════════════════════════════
+   FOOTER
+════════════════════════════════ */
+footer{background:var(--ink);color:var(--cream);padding:28px 52px;display:flex;justify-content:space-between;align-items:center;}
+.ft-name{font-family:'Playfair Display',serif;font-style:italic;font-size:15px;}
+.ft-copy{font-family:'IBM Plex Mono',monospace;font-size:9.5px;color:#3a3a3a;letter-spacing:.08em;text-transform:uppercase;}
+.ft-links{display:flex;gap:22px;}
+.ft-links a{font-family:'IBM Plex Mono',monospace;font-size:9.5px;letter-spacing:.08em;text-transform:uppercase;color:#3a3a3a;text-decoration:none;transition:color .15s;}
+.ft-links a:hover{color:var(--cream);}
+
+/* ════════════════════════════════
+   ANIMATIONS
+════════════════════════════════ */
+.fu{opacity:0;transform:translateY(22px);transition:opacity .65s ease,transform .65s ease;}
+.fu.on{opacity:1;transform:none;}
+/* animated SVG line */
+.anim-line{stroke-dasharray:400;stroke-dashoffset:400;transition:stroke-dashoffset 1.2s ease;}
+.fu.on .anim-line{stroke-dashoffset:0;}
+
+/* ════════════════════════════════
+   RESPONSIVE
+════════════════════════════════ */
+@media(max-width:940px){
+  .topband{padding:0 20px;}.tb-r{display:none;}
+  nav{padding:0 20px;}.nav-ul{display:none;}
+  #hero{grid-template-columns:1fr;}
+  .hero-left{padding:56px 20px;border-right:none;}
+  .hero-btm{grid-template-columns:1fr;}
+  .hero-ctas{flex-direction:row;}
+  .hero-right{border-top:1px solid var(--rule);}
+  .hero-stats{grid-template-columns:repeat(4,1fr);}
+  .hstat:nth-child(3),.hstat:nth-child(4){border-bottom:none;}
+  .sw{padding:64px 20px;}
+  .sh{grid-template-columns:1fr;gap:14px;margin-bottom:40px;}
+  .srv-row{grid-template-columns:1fr;gap:14px;}
+  .srv-n{display:none;}
+  .pf-top{grid-template-columns:1fr;}
+  .pf-vis{height:200px;}
+  .proj-row{grid-template-columns:1fr;gap:12px;}
+  .sk-grid{grid-template-columns:1fr;gap:52px;}
+  .exp-row{grid-template-columns:1fr;gap:12px;}
+  .ach-grid{grid-template-columns:1fr;gap:20px;}
+  .ct-wrap{grid-template-columns:1fr;gap:48px;}
+  footer{flex-direction:column;gap:14px;padding:24px 20px;text-align:center;}
+}
+</style>
+</head>
+<body>
+
+<!-- TOP BAND -->
+<div class="topband">
+  <span class="tb-l">Mohammad Ehtesham · Portfolio 2025</span>
+  <div class="tb-r">
+    <a href="https://github.com/ehte-01" target="_blank">GitHub</a>
+    <a href="https://www.linkedin.com/in/mohammad-ehtesham-7475a532a" target="_blank">LinkedIn</a>
+    <a href="mailto:infoehtesham7886@gmail.com">Email</a>
+  </div>
+</div>
+
+<!-- MARQUEE -->
+<div class="marquee">
+  <div class="mq-track">
+    <span>Java</span><span class="dot">·</span><span>Spring Boot</span><span class="dot">·</span><span>Node.js</span><span class="dot">·</span><span>TypeScript</span><span class="dot">·</span><span>React</span><span class="dot">·</span><span>Next.js</span><span class="dot">·</span><span>MongoDB</span><span class="dot">·</span><span>AWS / OCI</span><span class="dot">·</span><span>OpenAI</span><span class="dot">·</span><span>Gemini</span><span class="dot">·</span><span>Python</span><span class="dot">·</span><span>Docker</span><span class="dot">·</span><span>YOLOv8</span><span class="dot">·</span><span>MySQL</span><span class="dot">·</span><span>Firebase</span><span class="dot">·</span><span>Kafka</span><span class="dot">·</span><span>REST APIs</span><span class="dot">·</span><span>DSA</span><span class="dot">·</span>
+    <span>Java</span><span class="dot">·</span><span>Spring Boot</span><span class="dot">·</span><span>Node.js</span><span class="dot">·</span><span>TypeScript</span><span class="dot">·</span><span>React</span><span class="dot">·</span><span>Next.js</span><span class="dot">·</span><span>MongoDB</span><span class="dot">·</span><span>AWS / OCI</span><span class="dot">·</span><span>OpenAI</span><span class="dot">·</span><span>Gemini</span><span class="dot">·</span><span>Python</span><span class="dot">·</span><span>Docker</span><span class="dot">·</span><span>YOLOv8</span><span class="dot">·</span><span>MySQL</span><span class="dot">·</span><span>Firebase</span><span class="dot">·</span><span>Kafka</span><span class="dot">·</span><span>REST APIs</span><span class="dot">·</span><span>DSA</span><span class="dot">·</span>
+  </div>
+</div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a href="#" class="nav-logo">Ehtesham<em>.</em></a>
+  <ul class="nav-ul">
+    <li><a href="#services">Services</a></li>
+    <li><a href="#projects">Work</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#contact" class="nav-hire">Hire Me</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-left">
+    <div>
+      <div class="eyebrow">
+        <span class="live-dot"></span>
+        Open for freelance &amp; internships · 2025
+      </div>
+      <h1 class="hero-name">
+        Mohammad<br>
+        <span class="ital">Ehtesham</span>
+      </h1>
+      <div class="hero-divider"></div>
+      <div class="hero-btm">
+        <p class="hero-bio">
+          I build backends that scale and UIs that don't break.
+          <strong>B.Tech CSAIML</strong> at GL Bajaj, Greater Noida —
+          working with Java, Node.js, TypeScript, React, MongoDB and AWS.
+          Shipped real projects, earned <strong>30+ industry certifications</strong>,
+          completed simulations at <strong>JP Morgan, Deloitte &amp; Accenture.</strong>
+        </p>
+        <div class="hero-ctas">
+          <a href="mailto:infoehtesham7886@gmail.com" class="btn-s">Start a Project →</a>
+          <a href="https://github.com/ehte-01" target="_blank" class="btn-g">View GitHub</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- PROFILE RIGHT -->
+  <div class="hero-right">
+    <div class="profile-wrap" id="profileWrap" onclick="document.getElementById('photo-input').click()">
+      <img id="profileImg" alt="Mohammad Ehtesham">
+
+      <div class="profile-placeholder" id="profilePH">
+        <!-- Person silhouette SVG -->
+        <svg width="80" height="90" viewBox="0 0 80 90" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="40" cy="28" r="20" stroke="#7A7060" stroke-width="1.5" fill="none"/>
+          <path d="M4 88c0-19.882 16.118-36 36-36s36 16.118 36 36" stroke="#7A7060" stroke-width="1.5" fill="none" stroke-linecap="round"/>
+        </svg>
+        <div class="ph-text">Your Profile Photo<br>Click anywhere to upload</div>
+        <button class="ph-btn" onclick="event.stopPropagation();document.getElementById('photo-input').click()">Upload Photo</button>
+      </div>
+
+      <div class="profile-overlay">
+        <div class="profile-overlay-text">Click to change photo</div>
+      </div>
+    </div>
+    <input type="file" id="photo-input" accept="image/*">
+
+    <div class="hero-stats">
+      <div class="hstat">
+        <div class="hstat-num"><span class="ctr" data-to="30">0</span><sup>+</sup></div>
+        <div class="hstat-lbl">Industry<br>Certifications</div>
+      </div>
+      <div class="hstat">
+        <div class="hstat-num"><span class="ctr" data-to="10">0</span></div>
+        <div class="hstat-lbl">GitHub<br>Repos</div>
+      </div>
+      <div class="hstat">
+        <div class="hstat-num"><span class="ctr" data-to="3">0</span></div>
+        <div class="hstat-lbl">Virtual<br>Internships</div>
+      </div>
+      <div class="hstat">
+        <div class="hstat-num"><span class="ctr" data-to="5">0</span><sup>+</sup></div>
+        <div class="hstat-lbl">AI Projects<br>Shipped</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<div class="sw" id="services">
+  <div class="sh">
+    <div class="si">§ 01</div>
+    <h2 class="st">What I<br><em>build for you</em></h2>
+  </div>
+
+  <!-- 01 Backend -->
+  <div class="srv-row fu">
+    <div class="srv-n">01</div>
+    <div class="srv-name-col"><div class="srv-name">Backend Engineering</div></div>
+    <div class="srv-right">
+      <div class="srv-vis">
+        <!-- Animated server/circuit SVG -->
+        <svg viewBox="0 0 500 140" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+          <rect width="500" height="140" fill="#EEEAE0"/>
+          <!-- Server racks -->
+          <rect x="30" y="20" width="80" height="100" rx="2" fill="none" stroke="#D8D2C4" stroke-width="1"/>
+          <rect x="34" y="28" width="72" height="14" rx="1" fill="#FAF8F4" stroke="#D8D2C4" stroke-width=".8"/>
+          <rect x="34" y="46" width="72" height="14" rx="1" fill="#FAF8F4" stroke="#D8D2C4" stroke-width=".8"/>
+          <rect x="34" y="64" width="72" height="14" rx="1" fill="#FAF8F4" stroke="#D8D2C4" stroke-width=".8"/>
+          <rect x="34" y="82" width="72" height="14" rx="1" fill="#FAF8F4" stroke="#D8D2C4" stroke-width=".8"/>
+          <rect x="34" y="100" width="72" height="14" rx="1" fill="#FAF8F4" stroke="#D8D2C4" stroke-width=".8"/>
+          <circle cx="96" cy="35" r="3" fill="#D94F1E" opacity=".8"><animate attributeName="opacity" values="0.8;0.2;0.8" dur="1.8s" repeatCount="indefinite"/></circle>
+          <circle cx="96" cy="53" r="3" fill="#7A7060" opacity=".4"><animate attributeName="opacity" values="0.4;0.9;0.4" dur="2.3s" repeatCount="indefinite"/></circle>
+          <circle cx="96" cy="71" r="3" fill="#D94F1E" opacity=".6"><animate attributeName="opacity" values="0.6;0.1;0.6" dur="1.5s" repeatCount="indefinite"/></circle>
+          <!-- connecting lines -->
+          <path d="M110 35 L180 35 L180 70 L240 70" stroke="#D8D2C4" stroke-width="1" fill="none" class="anim-line" stroke-dasharray="200" stroke-dashoffset="200"/>
+          <path d="M110 71 L160 71 L160 90 L240 90" stroke="#D8D2C4" stroke-width="1" fill="none" class="anim-line" stroke-dasharray="180" stroke-dashoffset="180"/>
+          <!-- API box -->
+          <rect x="240" y="55" width="90" height="50" rx="2" fill="#FAF8F4" stroke="#D8D2C4" stroke-width="1"/>
+          <text x="285" y="75" font-family="monospace" font-size="9" fill="#7A7060" text-anchor="middle">REST API</text>
+          <text x="285" y="90" font-family="monospace" font-size="8" fill="#D94F1E" text-anchor="middle">Spring Boot</text>
+          <!-- right side -->
+          <path d="M330 80 L390 80 L390 50 L440 50" stroke="#D8D2C4" stroke-width="1" fill="none" class="anim-line" stroke-dasharray="140" stroke-dashoffset="140"/>
+          <path d="M330 80 L390 80 L390 110 L440 110" stroke="#D8D2C4" stroke-width="1" fill="none" class="anim-line" stroke-dasharray="140" stroke-dashoffset="140"/>
+          <circle cx="455" cy="50" r="12" fill="none" stroke="#D8D2C4" stroke-width="1"/>
+          <text x="455" y="54" font-family="monospace" font-size="7" fill="#7A7060" text-anchor="middle">DB</text>
+          <circle cx="455" cy="110" r="12" fill="none" stroke="#D8D2C4" stroke-width="1"/>
+          <text x="455" y="114" font-family="monospace" font-size="7" fill="#D94F1E" text-anchor="middle">MQ</text>
+        </svg>
+      </div>
+      <p class="srv-body">Production-grade REST APIs and event-driven microservices. Java with Spring Boot or Node.js + Express — clean architecture, Kafka integrations, and proper error handling.</p>
+      <div class="srv-tags"><span class="stag">Java</span><span class="stag">Spring Boot</span><span class="stag">Node.js</span><span class="stag">Kafka</span><span class="stag">MySQL</span></div>
+    </div>
+  </div>
+
+  <!-- 02 Full-Stack -->
+  <div class="srv-row fu">
+    <div class="srv-n">02</div>
+    <div class="srv-name-col"><div class="srv-name">Full-Stack Web Apps</div></div>
+    <div class="srv-right">
+      <div class="srv-vis">
+        <!-- Browser mockup SVG -->
+        <svg viewBox="0 0 500 140" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+          <rect width="500" height="140" fill="#EEEAE0"/>
+          <!-- Browser window -->
+          <rect x="30" y="18" width="440" height="104" rx="3" fill="#FAF8F4" stroke="#D8D2C4" stroke-width="1"/>
+          <!-- browser top bar -->
+          <rect x="30" y="18" width="440" height="22" rx="3" fill="#e8e4db" stroke="#D8D2C4" stroke-width="1"/>
+          <rect x="31" y="29" width="440" height="11" fill="#e8e4db"/>
+          <circle cx="48" cy="29" r="4" fill="#D94F1E" opacity=".7"/>
+          <circle cx="62" cy="29" r="4" fill="#D8D2C4"/>
+          <circle cx="76" cy="29" r="4" fill="#D8D2C4"/>
+          <!-- URL bar -->
+          <rect x="95" y="22" width="230" height="14" rx="2" fill="#FAF8F4" stroke="#D8D2C4" stroke-width=".8"/>
+          <text x="100" y="32" font-family="monospace" font-size="7" fill="#7A7060">https://swasth-ai.vercel.app</text>
+          <!-- page content mockup -->
+          <rect x="44" y="50" width="130" height="10" rx="1" fill="#D8D2C4" opacity=".6"/>
+          <rect x="44" y="66" width="90" height="7" rx="1" fill="#D8D2C4" opacity=".4"/>
+          <rect x="44" y="79" width="110" height="7" rx="1" fill="#D8D2C4" opacity=".3"/>
+          <rect x="44" y="92" width="70" height="7" rx="1" fill="#D8D2C4" opacity=".3"/>
+          <!-- code panel right -->
+          <rect x="220" y="44" width="230" height="72" rx="2" fill="#0E0D0B"/>
+          <text x="228" y="60" font-family="monospace" font-size="8" fill="#D94F1E">const</text>
+          <text x="254" y="60" font-family="monospace" font-size="8" fill="#FAF8F4"> app = </text>
+          <text x="228" y="74" font-family="monospace" font-size="8" fill="#7A7060">  next.js + ts</text>
+          <text x="228" y="88" font-family="monospace" font-size="8" fill="#D94F1E">await</text>
+          <text x="258" y="88" font-family="monospace" font-size="8" fill="#FAF8F4"> db.connect()</text>
+          <text x="228" y="102" font-family="monospace" font-size="8" fill="#7A7060">// MongoDB Atlas</text>
+        </svg>
+      </div>
+      <p class="srv-body">Next.js + TypeScript frontends to Node/Express backends and MongoDB Atlas — full stack, no hand-offs. Multilingual UIs, dashboards, and e-commerce platforms. No half-measures.</p>
+      <div class="srv-tags"><span class="stag">TypeScript</span><span class="stag">React</span><span class="stag">Next.js</span><span class="stag">Firebase</span><span class="stag">MongoDB</span></div>
+    </div>
+  </div>
+
+  <!-- 03 AI -->
+  <div class="srv-row fu">
+    <div class="srv-n">03</div>
+    <div class="srv-name-col"><div class="srv-name">AI &amp; LLM Integration</div></div>
+    <div class="srv-right">
+      <div class="srv-vis">
+        <!-- Neural network SVG -->
+        <svg viewBox="0 0 500 140" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+          <rect width="500" height="140" fill="#EEEAE0"/>
+          <!-- Input nodes -->
+          <circle cx="60" cy="40" r="10" fill="#FAF8F4" stroke="#D8D2C4" stroke-width="1.5"/>
+          <circle cx="60" cy="70" r="10" fill="#FAF8F4" stroke="#D8D2C4" stroke-width="1.5"/>
+          <circle cx="60" cy="100" r="10" fill="#FAF8F4" stroke="#D8D2C4" stroke-width="1.5"/>
+          <text x="60" y="44" font-family="monospace" font-size="7" fill="#7A7060" text-anchor="middle">txt</text>
+          <text x="60" y="74" font-family="monospace" font-size="7" fill="#7A7060" text-anchor="middle">img</text>
+          <text x="60" y="104" font-family="monospace" font-size="7" fill="#D94F1E" text-anchor="middle">voice</text>
+          <!-- hidden layer 1 -->
+          <circle cx="180" cy="30" r="10" fill="#FAF8F4" stroke="#D94F1E" stroke-width="1.2" opacity=".8"/>
+          <circle cx="180" cy="55" r="10" fill="#FAF8F4" stroke="#D94F1E" stroke-width="1.2" opacity=".6"/>
+          <circle cx="180" cy="80" r="10" fill="#FAF8F4" stroke="#D94F1E" stroke-width="1.2" opacity=".7"/>
+          <circle cx="180" cy="105" r="10" fill="#FAF8F4" stroke="#D94F1E" stroke-width="1.2" opacity=".5"/>
+          <!-- connections layer 0-1 -->
+          <line x1="70" y1="40" x2="170" y2="30" stroke="#D8D2C4" stroke-width=".8"/>
+          <line x1="70" y1="40" x2="170" y2="55" stroke="#D8D2C4" stroke-width=".8"/>
+          <line x1="70" y1="40" x2="170" y2="80" stroke="#D8D2C4" stroke-width=".8"/>
+          <line x1="70" y1="70" x2="170" y2="30" stroke="#D8D2C4" stroke-width=".8"/>
+          <line x1="70" y1="70" x2="170" y2="55" stroke="#D8D2C4" stroke-width=".8"/>
+          <line x1="70" y1="70" x2="170" y2="105" stroke="#D8D2C4" stroke-width=".8"/>
+          <line x1="70" y1="100" x2="170" y2="55" stroke="#D8D2C4" stroke-width=".8"/>
+          <line x1="70" y1="100" x2="170" y2="80" stroke="#D8D2C4" stroke-width=".8"/>
+          <line x1="70" y1="100" x2="170" y2="105" stroke="#D8D2C4" stroke-width=".8"/>
+          <!-- hidden layer 2 -->
+          <circle cx="300" cy="40" r="10" fill="#FAF8F4" stroke="#D94F1E" stroke-width="1.5"/>
+          <circle cx="300" cy="70" r="10" fill="#FAF8F4" stroke="#D94F1E" stroke-width="1.5"/>
+          <circle cx="300" cy="100" r="10" fill="#FAF8F4" stroke="#D94F1E" stroke-width="1.5"/>
+          <!-- connections 1-2 animated -->
+          <line x1="190" y1="30" x2="290" y2="40" stroke="#D94F1E" stroke-width=".6" opacity=".4"/>
+          <line x1="190" y1="55" x2="290" y2="40" stroke="#D94F1E" stroke-width=".6" opacity=".3"/>
+          <line x1="190" y1="80" x2="290" y2="70" stroke="#D94F1E" stroke-width=".6" opacity=".5"/>
+          <line x1="190" y1="105" x2="290" y2="100" stroke="#D94F1E" stroke-width=".6" opacity=".4"/>
+          <!-- output -->
+          <rect x="360" y="55" width="110" height="30" rx="2" fill="#FAF8F4" stroke="#D94F1E" stroke-width="1"/>
+          <text x="415" y="67" font-family="monospace" font-size="8" fill="#D94F1E" text-anchor="middle">OpenAI</text>
+          <text x="415" y="78" font-family="monospace" font-size="8" fill="#7A7060" text-anchor="middle">/ Gemini</text>
+          <line x1="310" y1="40" x2="360" y2="65" stroke="#D94F1E" stroke-width=".8" opacity=".5"/>
+          <line x1="310" y1="70" x2="360" y2="70" stroke="#D94F1E" stroke-width=".8" opacity=".7"/>
+          <line x1="310" y1="100" x2="360" y2="75" stroke="#D94F1E" stroke-width=".8" opacity=".4"/>
+          <!-- pulse on output -->
+          <circle cx="415" cy="70" r="22" fill="none" stroke="#D94F1E" stroke-width=".5" opacity=".3"><animate attributeName="r" values="22;32;22" dur="2s" repeatCount="indefinite"/><animate attributeName="opacity" values="0.3;0;0.3" dur="2s" repeatCount="indefinite"/></circle>
+        </svg>
+      </div>
+      <p class="srv-body">Real AI-powered products — not wrappers. Voice/text/image diagnosis with OpenAI and Gemini, OCR pipelines, NLP features, smart recommendation engines.</p>
+      <div class="srv-tags"><span class="stag">OpenAI</span><span class="stag">Gemini</span><span class="stag">NLP</span><span class="stag">TensorFlow</span><span class="stag">Python ML</span></div>
+    </div>
+  </div>
+
+  <!-- 04 Database -->
+  <div class="srv-row fu">
+    <div class="srv-n">04</div>
+    <div class="srv-name-col"><div class="srv-name">Database Design</div></div>
+    <div class="srv-right">
+      <div class="srv-vis">
+        <!-- Document/collection SVG -->
+        <svg viewBox="0 0 500 140" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+          <rect width="500" height="140" fill="#EEEAE0"/>
+          <!-- MongoDB collection visual -->
+          <rect x="30" y="25" width="130" height="90" rx="2" fill="#FAF8F4" stroke="#D8D2C4" stroke-width="1"/>
+          <rect x="30" y="25" width="130" height="18" rx="2" fill="#EEEAE0" stroke="#D8D2C4" stroke-width="1"/>
+          <rect x="31" y="34" width="130" height="9" fill="#EEEAE0"/>
+          <text x="38" y="38" font-family="monospace" font-size="8" fill="#D94F1E">db.users</text>
+          <!-- JSON-like content -->
+          <text x="38" y="58" font-family="monospace" font-size="7" fill="#7A7060">{ _id: ObjectId,</text>
+          <text x="38" y="70" font-family="monospace" font-size="7" fill="#7A7060">  name: "Ehtesham",</text>
+          <text x="38" y="82" font-family="monospace" font-size="7" fill="#D94F1E">  skills: [...]</text>
+          <text x="38" y="94" font-family="monospace" font-size="7" fill="#7A7060">  createdAt: Date</text>
+          <text x="38" y="106" font-family="monospace" font-size="7" fill="#7A7060">}</text>
+          <!-- Arrow -->
+          <path d="M162 70 L200 70" stroke="#D8D2C4" stroke-width="1" marker-end="url(#arr)" class="anim-line" stroke-dasharray="40" stroke-dashoffset="40"/>
+          <defs><marker id="arr" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#D8D2C4"/></marker></defs>
+          <!-- Index box -->
+          <rect x="200" y="40" width="110" height="60" rx="2" fill="#FAF8F4" stroke="#D94F1E" stroke-width="1"/>
+          <text x="255" y="58" font-family="monospace" font-size="8" fill="#D94F1E" text-anchor="middle">INDEXES</text>
+          <text x="255" y="72" font-family="monospace" font-size="7" fill="#7A7060" text-anchor="middle">{ name: 1 }</text>
+          <text x="255" y="84" font-family="monospace" font-size="7" fill="#7A7060" text-anchor="middle">{ skills: "text" }</text>
+          <!-- Atlas cloud -->
+          <ellipse cx="400" cy="55" rx="50" ry="20" fill="#FAF8F4" stroke="#D8D2C4" stroke-width="1"/>
+          <ellipse cx="380" cy="60" rx="35" ry="20" fill="#FAF8F4" stroke="#D8D2C4" stroke-width="1"/>
+          <ellipse cx="420" cy="60" rx="35" ry="20" fill="#FAF8F4" stroke="#D8D2C4" stroke-width="1"/>
+          <ellipse cx="400" cy="65" rx="55" ry="18" fill="#EEEAE0" stroke="#D8D2C4" stroke-width="1"/>
+          <text x="400" y="69" font-family="monospace" font-size="9" fill="#D94F1E" text-anchor="middle">Atlas</text>
+          <path d="M310 70 L340 70" stroke="#D8D2C4" stroke-width="1" class="anim-line" stroke-dasharray="32" stroke-dashoffset="32"/>
+          <!-- Aggregation at bottom -->
+          <text x="200" y="120" font-family="monospace" font-size="8" fill="#7A7060">$match → $group → $sort → $project</text>
+        </svg>
+      </div>
+      <p class="srv-body">MongoDB is where I'm strongest — 15+ MongoDB University certifications. Schema design, aggregation pipelines, Atlas Search, indexing strategies, and data modeling.</p>
+      <div class="srv-tags"><span class="stag">MongoDB</span><span class="stag">Atlas</span><span class="stag">Aggregation</span><span class="stag">MySQL</span><span class="stag">Data Modeling</span></div>
+    </div>
+  </div>
+
+  <!-- 05 Cloud -->
+  <div class="srv-row fu">
+    <div class="srv-n">05</div>
+    <div class="srv-name-col"><div class="srv-name">Cloud &amp; DevOps</div></div>
+    <div class="srv-right">
+      <div class="srv-vis">
+        <!-- Deployment pipeline SVG -->
+        <svg viewBox="0 0 500 140" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+          <rect width="500" height="140" fill="#EEEAE0"/>
+          <!-- Pipeline stages -->
+          <rect x="20" y="50" width="70" height="40" rx="2" fill="#FAF8F4" stroke="#D8D2C4" stroke-width="1"/>
+          <text x="55" y="67" font-family="monospace" font-size="8" fill="#7A7060" text-anchor="middle">Code</text>
+          <text x="55" y="79" font-family="monospace" font-size="7" fill="#D94F1E" text-anchor="middle">GitHub</text>
+          <path d="M92 70 L112 70" stroke="#D8D2C4" stroke-width="1" class="anim-line" stroke-dasharray="22" stroke-dashoffset="22"/>
+          <polygon points="112,66 120,70 112,74" fill="#D8D2C4"/>
+
+          <rect x="120" y="50" width="70" height="40" rx="2" fill="#FAF8F4" stroke="#D8D2C4" stroke-width="1"/>
+          <text x="155" y="67" font-family="monospace" font-size="8" fill="#7A7060" text-anchor="middle">Build</text>
+          <text x="155" y="79" font-family="monospace" font-size="7" fill="#D94F1E" text-anchor="middle">Docker</text>
+          <path d="M192 70 L212 70" stroke="#D8D2C4" stroke-width="1" class="anim-line" stroke-dasharray="22" stroke-dashoffset="22"/>
+          <polygon points="212,66 220,70 212,74" fill="#D8D2C4"/>
+
+          <rect x="220" y="50" width="70" height="40" rx="2" fill="#FAF8F4" stroke="#D94F1E" stroke-width="1"/>
+          <text x="255" y="67" font-family="monospace" font-size="8" fill="#7A7060" text-anchor="middle">Deploy</text>
+          <text x="255" y="79" font-family="monospace" font-size="7" fill="#D94F1E" text-anchor="middle">AWS/OCI</text>
+          <path d="M292 70 L312 70" stroke="#D94F1E" stroke-width="1" class="anim-line" stroke-dasharray="22" stroke-dashoffset="22"/>
+          <polygon points="312,66 320,70 312,74" fill="#D94F1E"/>
+
+          <rect x="320" y="50" width="70" height="40" rx="2" fill="#FAF8F4" stroke="#D8D2C4" stroke-width="1"/>
+          <text x="355" y="67" font-family="monospace" font-size="8" fill="#7A7060" text-anchor="middle">Monitor</text>
+          <text x="355" y="79" font-family="monospace" font-size="7" fill="#D94F1E" text-anchor="middle">Live ✓</text>
+          <!-- animated dot traveling the pipeline -->
+          <circle r="4" fill="#D94F1E" opacity=".8">
+            <animateMotion dur="3.5s" repeatCount="indefinite" path="M55,70 L155,70 L255,70 L355,70"/>
+            <animate attributeName="opacity" values="0;1;1;1;0" dur="3.5s" repeatCount="indefinite"/>
+          </circle>
+          <!-- labels below -->
+          <text x="250" y="118" font-family="monospace" font-size="9" fill="#7A7060" text-anchor="middle">Production pipeline · AWS / Oracle Cloud Infrastructure</text>
+        </svg>
+      </div>
+      <p class="srv-body">Production deployments on AWS and Oracle Cloud Infrastructure. Docker containerization, environment config, and deployment pipelines. Shipped to the cloud — not just localhost.</p>
+      <div class="srv-tags"><span class="stag">AWS</span><span class="stag">OCI</span><span class="stag">Docker</span><span class="stag">Git / GitHub</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- PROJECTS -->
+<div class="sw" id="projects">
+  <div class="sh">
+    <div class="si" style="color:#3a3a3a">§ 02</div>
+    <h2 class="st" style="color:var(--cream)">Selected<br><em style="color:#444">work</em></h2>
+  </div>
+
+  <!-- Featured: Swasth AI -->
+  <div class="proj-feat fu" onclick="window.open('https://github.com/ehte-01/Swasth-AI-2.0','_blank')">
+    <div class="pf-top">
+      <div class="pf-text">
+        <span class="pf-badge">⭐ Featured · TypeScript · AWS/OCI</span>
+        <div class="pf-name">Swasth AI 2.0</div>
+        <p class="pf-desc">Full-stack AI healthcare platform — multilingual Next.js frontend with 3D avatars, voice + text + image diagnosis via OpenAI and Gemini, OCR medical report scanner, family medical vault, smart doctor recommendation. Node.js + MongoDB backend on AWS/OCI. IoT smartwatch integration. Most complex thing I've shipped.</p>
+        <div class="pf-stack">
+          <span class="ptag">TypeScript</span><span class="ptag">Next.js</span><span class="ptag">React</span><span class="ptag">Node.js</span><span class="ptag">MongoDB</span><span class="ptag">OpenAI</span><span class="ptag">Gemini</span><span class="ptag">AWS/OCI</span>
+        </div>
+      </div>
+      <div class="pf-vis">
+        <!-- Healthcare + AI SVG -->
+        <svg viewBox="0 0 320 280" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+          <rect width="320" height="280" fill="#0a0a0a"/>
+          <!-- ECG line -->
+          <path d="M0,140 L60,140 L75,100 L90,180 L105,60 L120,200 L135,140 L200,140 L215,120 L225,160 L235,130 L245,140 L320,140" stroke="#D94F1E" stroke-width="1.5" fill="none" opacity=".6">
+            <animate attributeName="stroke-dashoffset" from="600" to="0" dur="3s" repeatCount="indefinite"/>
+          </path>
+          <!-- AI brain outline -->
+          <circle cx="160" cy="100" r="45" fill="none" stroke="#1e1e1e" stroke-width="1"/>
+          <circle cx="160" cy="100" r="32" fill="none" stroke="#D94F1E" stroke-width=".8" opacity=".4"/>
+          <!-- neural dots -->
+          <circle cx="145" cy="88" r="3" fill="#D94F1E" opacity=".7"><animate attributeName="opacity" values=".7;.2;.7" dur="1.8s" repeatCount="indefinite"/></circle>
+          <circle cx="168" cy="82" r="3" fill="#D94F1E" opacity=".4"><animate attributeName="opacity" values=".4;.9;.4" dur="2.2s" repeatCount="indefinite"/></circle>
+          <circle cx="152" cy="108" r="3" fill="#D94F1E" opacity=".6"><animate attributeName="opacity" values=".6;.1;.6" dur="1.5s" repeatCount="indefinite"/></circle>
+          <circle cx="175" cy="100" r="3" fill="#D94F1E" opacity=".5"><animate attributeName="opacity" values=".5;.9;.5" dur="2.5s" repeatCount="indefinite"/></circle>
+          <line x1="145" y1="88" x2="168" y2="82" stroke="#D94F1E" stroke-width=".5" opacity=".3"/>
+          <line x1="168" y1="82" x2="175" y2="100" stroke="#D94F1E" stroke-width=".5" opacity=".3"/>
+          <line x1="145" y1="88" x2="152" y2="108" stroke="#D94F1E" stroke-width=".5" opacity=".3"/>
+          <line x1="175" y1="100" x2="152" y2="108" stroke="#D94F1E" stroke-width=".5" opacity=".3"/>
+          <!-- tech labels -->
+          <text x="160" y="195" font-family="monospace" font-size="9" fill="#444" text-anchor="middle">OpenAI · Gemini · NLP</text>
+          <text x="160" y="212" font-family="monospace" font-size="9" fill="#333" text-anchor="middle">Next.js · Node.js · MongoDB</text>
+          <text x="160" y="235" font-family="monospace" font-size="9" fill="#D94F1E" text-anchor="middle">AWS / OCI · IoT</text>
+          <!-- corner marks -->
+          <rect x="10" y="10" width="20" height="2" fill="#1e1e1e"/>
+          <rect x="10" y="10" width="2" height="20" fill="#1e1e1e"/>
+          <rect x="290" y="10" width="20" height="2" fill="#1e1e1e"/>
+          <rect x="308" y="10" width="2" height="20" fill="#1e1e1e"/>
+          <rect x="10" y="268" width="20" height="2" fill="#1e1e1e"/>
+          <rect x="10" y="250" width="2" height="20" fill="#1e1e1e"/>
+          <rect x="290" y="268" width="20" height="2" fill="#1e1e1e"/>
+          <rect x="308" y="250" width="2" height="20" fill="#1e1e1e"/>
+        </svg>
+      </div>
+    </div>
+    <div class="pf-bot">
+      <div></div>
+      <a href="https://github.com/ehte-01/Swasth-AI-2.0" target="_blank" class="gh-link" onclick="event.stopPropagation()">View on GitHub →</a>
+    </div>
+  </div>
+
+  <!-- TechBaseera -->
+  <div class="proj-row fu" onclick="window.open('https://github.com/ehte-01','_blank')">
+    <div class="pr-meta"><span class="pr-num">02</span><span class="pr-lang">Python</span></div>
+    <div class="pr-vis">
+      <svg viewBox="0 0 180 100" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+        <rect width="180" height="100" fill="#080808"/>
+        <!-- Camera icon -->
+        <rect x="20" y="30" width="50" height="38" rx="2" fill="#111" stroke="#1e1e1e" stroke-width="1"/>
+        <circle cx="45" cy="49" r="12" fill="none" stroke="#D94F1E" stroke-width="1" opacity=".7"/>
+        <circle cx="45" cy="49" r="6" fill="none" stroke="#D94F1E" stroke-width=".8" opacity=".5"/>
+        <rect x="56" y="36" width="10" height="7" rx="1" fill="#1e1e1e"/>
+        <!-- detection box -->
+        <rect x="80" y="22" width="40" height="55" fill="none" stroke="#D94F1E" stroke-width="1" stroke-dasharray="4,2"/>
+        <text x="100" y="85" font-family="monospace" font-size="6" fill="#D94F1E" text-anchor="middle">PERSON</text>
+        <text x="100" y="93" font-family="monospace" font-size="6" fill="#555" text-anchor="middle">94.2%</text>
+        <!-- signal lines -->
+        <path d="M130 49 L160 30" stroke="#D94F1E" stroke-width=".7" opacity=".4"/>
+        <path d="M130 49 L160 49" stroke="#D94F1E" stroke-width=".7" opacity=".6"/>
+        <path d="M130 49 L160 68" stroke="#D94F1E" stroke-width=".7" opacity=".3"/>
+        <circle cx="163" cy="30" r="3" fill="#D94F1E" opacity=".5"><animate attributeName="opacity" values=".5;1;.5" dur="1.2s" repeatCount="indefinite"/></circle>
+        <circle cx="163" cy="49" r="3" fill="#D94F1E" opacity=".8"><animate attributeName="opacity" values=".8;.2;.8" dur="1.8s" repeatCount="indefinite"/></circle>
+        <circle cx="163" cy="68" r="3" fill="#555" opacity=".4"><animate attributeName="opacity" values=".4;.9;.4" dur="2.1s" repeatCount="indefinite"/></circle>
+      </svg>
+    </div>
+    <div>
+      <div class="pr-name">TechBaseera — Edge AI Security</div>
+      <p class="pr-desc">YOLOv8 + ByteTrack Re-ID for multi-camera tracking. Real-time alerting via WhatsApp, Email, Telegram. GSM/SMS fallback. Edge deployment on Jetson Nano and Raspberry Pi.</p>
+      <div class="pr-stack"><span class="ptag">Python</span><span class="ptag">YOLOv8</span><span class="ptag">ByteTrack</span><span class="ptag">Jetson Nano</span></div>
+    </div>
+    <a href="https://github.com/ehte-01" target="_blank" class="gh-link" onclick="event.stopPropagation()">GitHub →</a>
+  </div>
+
+  <!-- AI College Monitoring -->
+  <div class="proj-row fu" onclick="window.open('https://github.com/ehte-01/AI-College-Monitoring-System','_blank')">
+    <div class="pr-meta"><span class="pr-num">03</span><span class="pr-lang">Python</span></div>
+    <div class="pr-vis">
+      <svg viewBox="0 0 180 100" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+        <rect width="180" height="100" fill="#080808"/>
+        <!-- Grid of dots (monitoring dashboard) -->
+        <text x="14" y="20" font-family="monospace" font-size="8" fill="#333">MONITORING SYSTEM</text>
+        <line x1="10" y1="24" x2="170" y2="24" stroke="#1e1e1e" stroke-width=".5"/>
+        <!-- grid cells -->
+        <rect x="12" y="30" width="35" height="22" rx="1" fill="#111" stroke="#1e1e1e" stroke-width=".8"/>
+        <text x="29" y="44" font-family="monospace" font-size="7" fill="#D94F1E" text-anchor="middle">LIVE</text>
+        <rect x="52" y="30" width="35" height="22" rx="1" fill="#111" stroke="#1e1e1e" stroke-width=".8"/>
+        <text x="69" y="44" font-family="monospace" font-size="6" fill="#555" text-anchor="middle">DETECT</text>
+        <rect x="92" y="30" width="35" height="22" rx="1" fill="#111" stroke="#1e1e1e" stroke-width=".8"/>
+        <text x="109" y="44" font-family="monospace" font-size="6" fill="#555" text-anchor="middle">TRACK</text>
+        <rect x="132" y="30" width="35" height="22" rx="1" fill="#111" stroke="#1e1e1e" stroke-width=".8"/>
+        <text x="149" y="44" font-family="monospace" font-size="6" fill="#333" text-anchor="middle">ALERT</text>
+        <!-- bottom bar chart -->
+        <rect x="12" y="60" width="8" height="28" rx="1" fill="#D94F1E" opacity=".6"/>
+        <rect x="24" y="68" width="8" height="20" rx="1" fill="#333"/>
+        <rect x="36" y="55" width="8" height="33" rx="1" fill="#D94F1E" opacity=".4"/>
+        <rect x="48" y="72" width="8" height="16" rx="1" fill="#333"/>
+        <rect x="60" y="60" width="8" height="28" rx="1" fill="#D94F1E" opacity=".5"/>
+        <rect x="72" y="65" width="8" height="23" rx="1" fill="#333"/>
+      </svg>
+    </div>
+    <div>
+      <div class="pr-name">AI College Monitoring System</div>
+      <p class="pr-desc">Campus surveillance with AI-powered detection and automated analytics. Built for real institutional deployment — not a toy project.</p>
+      <div class="pr-stack"><span class="ptag">Python</span><span class="ptag">Computer Vision</span><span class="ptag">AI</span></div>
+    </div>
+    <a href="https://github.com/ehte-01/AI-College-Monitoring-System" target="_blank" class="gh-link" onclick="event.stopPropagation()">GitHub →</a>
+  </div>
+
+  <!-- Magento -->
+  <div class="proj-row fu" onclick="window.open('https://github.com/ehte-01/Magento-2-e-Commercial-Website','_blank')">
+    <div class="pr-meta"><span class="pr-num">04</span><span class="pr-lang">PHP</span></div>
+    <div class="pr-vis">
+      <svg viewBox="0 0 180 100" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+        <rect width="180" height="100" fill="#080808"/>
+        <!-- ecommerce UI mockup -->
+        <rect x="10" y="10" width="160" height="80" rx="1" fill="#0d0d0d" stroke="#1e1e1e" stroke-width=".8"/>
+        <rect x="10" y="10" width="160" height="14" rx="1" fill="#111"/>
+        <rect x="12" y="12" width="50" height="10" rx="1" fill="#1a1a1a"/>
+        <rect x="140" y="13" width="26" height="8" rx="1" fill="#D94F1E" opacity=".8"/>
+        <!-- product cards -->
+        <rect x="16" y="30" width="40" height="50" rx="1" fill="#111" stroke="#1e1e1e" stroke-width=".8"/>
+        <rect x="16" y="30" width="40" height="28" rx="1" fill="#1a1a1a"/>
+        <rect x="18" y="62" width="30" height="4" rx="1" fill="#333"/>
+        <rect x="18" y="70" width="20" height="4" rx="1" fill="#D94F1E" opacity=".6"/>
+        <rect x="62" y="30" width="40" height="50" rx="1" fill="#111" stroke="#D94F1E" stroke-width=".8"/>
+        <rect x="62" y="30" width="40" height="28" rx="1" fill="#1a1a1a"/>
+        <rect x="64" y="62" width="30" height="4" rx="1" fill="#333"/>
+        <rect x="64" y="70" width="20" height="4" rx="1" fill="#D94F1E" opacity=".6"/>
+        <rect x="108" y="30" width="40" height="50" rx="1" fill="#111" stroke="#1e1e1e" stroke-width=".8"/>
+        <rect x="108" y="30" width="40" height="28" rx="1" fill="#1a1a1a"/>
+        <rect x="110" y="62" width="30" height="4" rx="1" fill="#333"/>
+        <rect x="110" y="70" width="20" height="4" rx="1" fill="#D94F1E" opacity=".6"/>
+      </svg>
+    </div>
+    <div>
+      <div class="pr-name">Magento 2 E-Commerce Platform</div>
+      <p class="pr-desc">Full store on Magento 2 — product catalog, checkout flow, payment integrations. Real scale, real store.</p>
+      <div class="pr-stack"><span class="ptag">PHP</span><span class="ptag">Magento 2</span><span class="ptag">MySQL</span></div>
+    </div>
+    <a href="https://github.com/ehte-01/Magento-2-e-Commercial-Website" target="_blank" class="gh-link" onclick="event.stopPropagation()">GitHub →</a>
+  </div>
+
+  <!-- Java DSA -->
+  <div class="proj-row fu" onclick="window.open('https://github.com/ehte-01/CompleteJava','_blank')">
+    <div class="pr-meta"><span class="pr-num">05</span><span class="pr-lang">Java</span></div>
+    <div class="pr-vis">
+      <svg viewBox="0 0 180 100" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+        <rect width="180" height="100" fill="#080808"/>
+        <!-- code editor look -->
+        <text x="10" y="18" font-family="monospace" font-size="8" fill="#333">// Java DSA</text>
+        <text x="10" y="32" font-family="monospace" font-size="7" fill="#D94F1E">class</text>
+        <text x="40" y="32" font-family="monospace" font-size="7" fill="#555"> Solution {</text>
+        <text x="10" y="44" font-family="monospace" font-size="7" fill="#555">  </text>
+        <text x="20" y="44" font-family="monospace" font-size="7" fill="#D94F1E">int</text>
+        <text x="36" y="44" font-family="monospace" font-size="7" fill="#555"> binarySearch(</text>
+        <text x="10" y="56" font-family="monospace" font-size="7" fill="#555">    int[] arr, int t)</text>
+        <text x="10" y="68" font-family="monospace" font-size="7" fill="#555">  { </text>
+        <text x="30" y="68" font-family="monospace" font-size="7" fill="#D94F1E">O(log n)</text>
+        <text x="10" y="80" font-family="monospace" font-size="7" fill="#555">  }</text>
+        <text x="10" y="92" font-family="monospace" font-size="7" fill="#333">}</text>
+        <!-- complexity badge -->
+        <rect x="120" y="30" width="50" height="40" rx="1" fill="#111" stroke="#1e1e1e" stroke-width=".8"/>
+        <text x="145" y="47" font-family="monospace" font-size="8" fill="#D94F1E" text-anchor="middle">LeetCode</text>
+        <text x="145" y="59" font-family="monospace" font-size="7" fill="#555" text-anchor="middle">Active</text>
+      </svg>
+    </div>
+    <div>
+      <div class="pr-name">Java DSA + LeetCode</div>
+      <p class="pr-desc">My running Java reference — full language coverage, OOP patterns, active LeetCode problem solving. Shows how I think through algorithms.</p>
+      <div class="pr-stack"><span class="ptag">Java</span><span class="ptag">DSA</span><span class="ptag">OOP</span><span class="ptag">Algorithms</span></div>
+    </div>
+    <a href="https://github.com/ehte-01/CompleteJava" target="_blank" class="gh-link" onclick="event.stopPropagation()">GitHub →</a>
+  </div>
+</div>
+
+<!-- SKILLS -->
+<div class="sw" id="skills">
+  <div class="sh">
+    <div class="si">§ 03</div>
+    <h2 class="st">Skills &amp;<br><em>credentials</em></h2>
+  </div>
+  <div class="sk-grid">
+    <div>
+      <div class="sk-title">// Technical Proficiency</div>
+      <div class="sk-line fu"><span class="sln">MongoDB (Advanced)</span><span class="sll hi">Expert</span></div>
+      <div class="sk-line fu"><span class="sln">Node.js + Express.js</span><span class="sll hi">Strong</span></div>
+      <div class="sk-line fu"><span class="sln">Java — DSA, Spring Boot, OOP</span><span class="sll hi">Strong</span></div>
+      <div class="sk-line fu"><span class="sln">TypeScript + React + Next.js</span><span class="sll">Proficient</span></div>
+      <div class="sk-line fu"><span class="sln">Python — ML, Analytics, CV</span><span class="sll">Proficient</span></div>
+      <div class="sk-line fu"><span class="sln">OpenAI / Gemini API</span><span class="sll">Proficient</span></div>
+      <div class="sk-line fu"><span class="sln">MySQL + SQL Design</span><span class="sll">Proficient</span></div>
+      <div class="sk-line fu"><span class="sln">AWS / OCI / Docker</span><span class="sll">Familiar</span></div>
+      <div class="sk-line fu"><span class="sln">Firebase + REST APIs + Git</span><span class="sll">Proficient</span></div>
+    </div>
+    <div>
+      <div class="sk-title">// Certifications (30+)</div>
+      <div class="cert-list">
+        <div class="cert-item fu"><span class="cin">MongoDB University — 15+ certs<br><span style="font-size:11px;color:var(--warm);font-weight:400">CRUD, Aggregation, Indexes, Transactions, Atlas Search, Compass, Data Modeling</span></span><span class="cio">MongoDB</span></div>
+        <div class="cert-item fu"><span class="cin">Oracle GenAI Professional</span><span class="cio">Oracle</span></div>
+        <div class="cert-item fu"><span class="cin">Machine Learning using Python</span><span class="cio">Simplilearn</span></div>
+        <div class="cert-item fu"><span class="cin">Prompt Engineering</span><span class="cio">IBM / Cognitive Class</span></div>
+        <div class="cert-item fu"><span class="cin">AI for Business &amp; Beginners</span><span class="cio">HP LIFE</span></div>
+        <div class="cert-item fu"><span class="cin">Data Science &amp; Cybersecurity</span><span class="cio">HP LIFE</span></div>
+        <div class="cert-item fu"><span class="cin">Generative AI Industry Connect</span><span class="cio">GUVI × HCL</span></div>
+        <div class="cert-item fu"><span class="cin">Google Ads</span><span class="cio">Coursera</span></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- EXPERIENCE -->
+<div class="sw" id="experience">
+  <div class="sh">
+    <div class="si">§ 04</div>
+    <h2 class="st">Industry<br><em>experience</em></h2>
+  </div>
+
+  <!-- Illustration banner -->
+  <div class="exp-banner fu">
+    <svg viewBox="0 0 1200 160" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+      <rect width="1200" height="160" fill="#0E0D0B"/>
+      <!-- JP Morgan block -->
+      <rect x="60" y="30" width="260" height="100" rx="2" fill="#111" stroke="#1e1e1e" stroke-width="1"/>
+      <text x="80" y="58" font-family="monospace" font-size="10" fill="#D94F1E">JP Morgan Chase &amp; Co.</text>
+      <text x="80" y="74" font-family="monospace" font-size="8" fill="#444">Software Engineering · Forage</text>
+      <text x="80" y="90" font-family="monospace" font-size="8" fill="#333">Java · Spring Boot · Kafka</text>
+      <text x="80" y="106" font-family="monospace" font-size="8" fill="#333">REST API · H2 Database</text>
+      <!-- divider line + arrow -->
+      <line x1="320" y1="80" x2="420" y2="80" stroke="#1e1e1e" stroke-width="1"/>
+      <polygon points="420,76 430,80 420,84" fill="#1e1e1e"/>
+      <!-- Deloitte block -->
+      <rect x="430" y="30" width="260" height="100" rx="2" fill="#111" stroke="#1e1e1e" stroke-width="1"/>
+      <text x="450" y="58" font-family="monospace" font-size="10" fill="#D94F1E">Deloitte</text>
+      <text x="450" y="74" font-family="monospace" font-size="8" fill="#444">Data Analytics · Forage</text>
+      <text x="450" y="90" font-family="monospace" font-size="8" fill="#333">Forensic Analysis</text>
+      <text x="450" y="106" font-family="monospace" font-size="8" fill="#333">Corporate Reporting</text>
+      <!-- arrow -->
+      <line x1="690" y1="80" x2="790" y2="80" stroke="#1e1e1e" stroke-width="1"/>
+      <polygon points="790,76 800,80 790,84" fill="#1e1e1e"/>
+      <!-- Accenture block -->
+      <rect x="800" y="30" width="260" height="100" rx="2" fill="#111" stroke="#1e1e1e" stroke-width="1"/>
+      <text x="820" y="58" font-family="monospace" font-size="10" fill="#D94F1E">Accenture</text>
+      <text x="820" y="74" font-family="monospace" font-size="8" fill="#444">Developer Experience · Forage</text>
+      <text x="820" y="90" font-family="monospace" font-size="8" fill="#333">API Optimization</text>
+      <text x="820" y="106" font-family="monospace" font-size="8" fill="#333">Agile · UX Design</text>
+      <!-- traveling dot -->
+      <circle r="4" fill="#D94F1E">
+        <animateMotion dur="4s" repeatCount="indefinite" path="M190,80 L320,80 L430,80 L560,80 L690,80 L800,80 L930,80"/>
+        <animate attributeName="opacity" values="0;1;1;1;1;1;0" dur="4s" repeatCount="indefinite"/>
+      </circle>
+    </svg>
+  </div>
+
+  <div>
+    <div class="exp-row fu">
+      <div><span class="exp-yr">2025</span></div>
+      <div><div class="exp-co">JP Morgan Chase &amp; Co.</div><div class="exp-rl">Software Engineering · Forage</div></div>
+      <ul class="exp-pts">
+        <li>Built REST API controllers from scratch using Java + Spring Boot</li>
+        <li>Integrated Apache Kafka for event-driven workflow simulation</li>
+        <li>H2 in-memory database setup for rapid prototyping cycles</li>
+        <li>Debugged backend modules and improved response performance</li>
+      </ul>
+    </div>
+    <div class="exp-row fu">
+      <div><span class="exp-yr">2025</span></div>
+      <div><div class="exp-co">Deloitte</div><div class="exp-rl">Data Analytics · Forage</div></div>
+      <ul class="exp-pts">
+        <li>Forensic data investigation on complex datasets</li>
+        <li>Identified anomalies using forensic technology methods</li>
+        <li>Structured corporate reports from raw analytical data</li>
+        <li>Simulated full consulting workflows from intake to deliverable</li>
+      </ul>
+    </div>
+    <div class="exp-row fu">
+      <div><span class="exp-yr">2025</span></div>
+      <div><div class="exp-co">Accenture</div><div class="exp-rl">Developer Experience · Forage</div></div>
+      <ul class="exp-pts">
+        <li>Designed user-centric features and optimized backend API flows</li>
+        <li>Applied Agile methodology and requirement analysis</li>
+        <li>Practical exposure to enterprise-scale development practices</li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="ach-grid">
+    <div class="ach-lbl">Notable<br>Achievements</div>
+    <div class="ach-items">
+      <div class="ach-pill fu">Naukri Campus Young Turks<span>95.27 Percentile</span></div>
+      <div class="ach-pill fu">Adobe India Hackathon<span>Round 1 Qualified</span></div>
+      <div class="ach-pill fu">Amazon ML Summer School<span>Selected Participant</span></div>
+      <div class="ach-pill fu">Hack With Uttar Pradesh<span>State Hackathon</span></div>
+      <div class="ach-pill fu">Capgemini Brand Quest<span>2025</span></div>
+    </div>
+  </div>
+</div>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="ct-wrap">
+    <div>
+      <div class="ct-h fu">Let's build<br><em>something real</em></div>
+      <!-- Contact art SVG -->
+      <div class="ct-art fu">
+        <svg viewBox="0 0 440 260" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
+          <rect width="440" height="260" fill="#0E0D0B"/>
+          <!-- Terminal window -->
+          <rect x="30" y="30" width="380" height="200" rx="3" fill="#111" stroke="#1e1e1e" stroke-width="1"/>
+          <rect x="30" y="30" width="380" height="28" rx="3" fill="#1a1a1a" stroke="#1e1e1e" stroke-width="1"/>
+          <rect x="31" y="49" width="380" height="9" fill="#1a1a1a"/>
+          <circle cx="52" cy="44" r="5" fill="#D94F1E" opacity=".7"/>
+          <circle cx="68" cy="44" r="5" fill="#333"/>
+          <circle cx="84" cy="44" r="5" fill="#333"/>
+          <text x="52" y="78" font-family="monospace" font-size="9" fill="#444">$ </text>
+          <text x="66" y="78" font-family="monospace" font-size="9" fill="#D94F1E">git clone</text>
+          <text x="128" y="78" font-family="monospace" font-size="9" fill="#666"> your-project.git</text>
+          <text x="52" y="96" font-family="monospace" font-size="9" fill="#444">✓ </text>
+          <text x="66" y="96" font-family="monospace" font-size="9" fill="#555">Cloning into 'your-project'...</text>
+          <text x="52" y="114" font-family="monospace" font-size="9" fill="#444">$ </text>
+          <text x="66" y="114" font-family="monospace" font-size="9" fill="#D94F1E">npm run dev</text>
+          <text x="52" y="132" font-family="monospace" font-size="9" fill="#555">▶ ready on http://localhost:3000</text>
+          <text x="52" y="150" font-family="monospace" font-size="9" fill="#444">$ </text>
+          <text x="66" y="150" font-family="monospace" font-size="9" fill="#D94F1E">deploy</text>
+          <text x="110" y="150" font-family="monospace" font-size="9" fill="#666"> --target aws</text>
+          <text x="52" y="168" font-family="monospace" font-size="9" fill="#555">✓ Deployed to production</text>
+          <text x="52" y="186" font-family="monospace" font-size="9" fill="#444">$ </text>
+          <text x="66" y="186" font-family="monospace" font-size="9" fill="#555">Waiting for your project</text>
+          <!-- blinking cursor -->
+          <rect x="66" y="200" width="8" height="12" fill="#D94F1E">
+            <animate attributeName="opacity" values="1;0;1" dur="1s" repeatCount="indefinite"/>
+          </rect>
+          <!-- corner marks -->
+          <rect x="10" y="10" width="18" height="1.5" fill="#1e1e1e"/>
+          <rect x="10" y="10" width="1.5" height="18" fill="#1e1e1e"/>
+          <rect x="412" y="10" width="18" height="1.5" fill="#1e1e1e"/>
+          <rect x="428.5" y="10" width="1.5" height="18" fill="#1e1e1e"/>
+          <rect x="10" y="249" width="18" height="1.5" fill="#1e1e1e"/>
+          <rect x="10" y="232" width="1.5" height="18" fill="#1e1e1e"/>
+          <rect x="412" y="249" width="18" height="1.5" fill="#1e1e1e"/>
+          <rect x="428.5" y="232" width="1.5" height="18" fill="#1e1e1e"/>
+        </svg>
+      </div>
+    </div>
+    <div>
+      <p class="ct-intro">I'm actively looking for freelance projects and internship opportunities. If you have a backend to build, an API to design, or an AI feature to integrate — I'd like to talk.</p>
+      <div class="ct-items">
+        <a href="mailto:infoehtesham7886@gmail.com" class="ct-item">
+          <span class="ct-l">Email</span><span class="ct-v">infoehtesham7886@gmail.com</span>
+        </a>
+        <a href="tel:+918604343153" class="ct-item">
+          <span class="ct-l">Phone</span><span class="ct-v">+91 8604343153</span>
+        </a>
+        <a href="https://github.com/ehte-01" target="_blank" class="ct-item">
+          <span class="ct-l">GitHub</span><span class="ct-v">github.com/ehte-01</span>
+        </a>
+        <a href="https://www.linkedin.com/in/mohammad-ehtesham-7475a532a" target="_blank" class="ct-item">
+          <span class="ct-l">LinkedIn</span><span class="ct-v">mohammad-ehtesham-7475a532a</span>
+        </a>
+        <div class="ct-item" style="cursor:default">
+          <span class="ct-l">Location</span><span class="ct-v">Greater Noida, India</span>
+        </div>
+      </div>
+
+<form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/success">
+
+<input type="hidden" name="form-name" value="contact">
+
+<p style="display:none">
+<label>Don’t fill this out: <input name="bot-field"></label>
+</p>
+
+<input type="text" name="name" placeholder="Your name" required>
+
+<input type="email" name="email" placeholder="Your email" required>
+
+<textarea name="message" placeholder="Your message" required></textarea>
+
+<button type="submit" class="btn-s">Send Message →</button>
+
+</form>
+
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="ft-name">Mohammad Ehtesham</div>
+  <div class="ft-copy">B.Tech CSAIML · GL Bajaj · AKTU · Greater Noida</div>
+  <div class="ft-links">
+    <a href="https://github.com/ehte-01" target="_blank">GitHub</a>
+    <a href="https://www.linkedin.com/in/mohammad-ehtesham-7475a532a" target="_blank">LinkedIn</a>
+    <a href="mailto:infoehtesham7886@gmail.com">Email</a>
+  </div>
+</footer>
+
+<script>
+/* ── Profile Photo Upload ── */
+const photoInput = document.getElementById('photo-input');
+const profileImg = document.getElementById('profileImg');
+const profilePH  = document.getElementById('profilePH');
+
+photoInput.addEventListener('change', (e) => {
+  const file = e.target.files[0];
+  if (!file) return;
+  const reader = new FileReader();
+  reader.onload = (ev) => {
+    profileImg.src = ev.target.result;
+    profileImg.style.display = 'block';
+    profilePH.style.display = 'none';
+  };
+  reader.readAsDataURL(file);
+});
+
+/* ── Nav scroll ── */
+window.addEventListener('scroll', () => {
+  document.getElementById('nav').classList.toggle('scrolled', scrollY > 40);
+});
+
+/* ── Fade-up on scroll ── */
+const io = new IntersectionObserver((entries) => {
+  entries.forEach((entry) => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('on');
+      io.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.07, rootMargin: '0px 0px -30px 0px' });
+
+document.querySelectorAll('.fu').forEach((el, i) => {
+  el.style.transitionDelay = (i % 6) * 60 + 'ms';
+  io.observe(el);
+});
+
+/* ── Counter animation ── */
+const counters = document.querySelectorAll('.ctr');
+const cio = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (!entry.isIntersecting) return;
+    const el = entry.target;
+    const target = parseInt(el.dataset.to);
+    const duration = 1400;
+    const steps = 60;
+    const inc = target / steps;
+    let current = 0;
+    let step = 0;
+    const timer = setInterval(() => {
+      step++;
+      current = Math.min(Math.round(inc * step), target);
+      el.textContent = current;
+      if (current >= target) clearInterval(timer);
+    }, duration / steps);
+    cio.unobserve(el);
+  });
+}, { threshold: 0.5 });
+counters.forEach(c => cio.observe(c));
+
+/* ── Subtle hero parallax ── */
+window.addEventListener('scroll', () => {
+  const name = document.querySelector('.hero-name');
+  if (name) name.style.transform = `translateY(${scrollY * 0.1}px)`;
+});
+</script>
+</body>
+</html>
