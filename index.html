@@ -343,9 +343,9 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:24px 52p
 
   <!-- LEFT: photo + stats -->
   <div class="hero-left">
-    <div class="photo-zone" id="photoZone" onclick="document.getElementById('photo-input').click()">
-      <img id="profileImg" alt="Mohammad Ehtesham">
-      <div class="photo-ph" id="photoPH">
+    <div class="photo-zone has-photo" id="photoZone" onclick="document.getElementById('photo-input').click()">
+      <img id="profileImg" alt="Mohammad Ehtesham" src="photo.jpg" style="display:block;" onerror="this.style.display='none';document.getElementById('photoPH').style.display='flex';document.getElementById('photoZone').classList.remove('has-photo');">
+      <div class="photo-ph" id="photoPH" style="display:none;">
         <div class="photo-icon">
           <svg width="30" height="34" viewBox="0 0 30 34" fill="none">
             <circle cx="15" cy="10" r="7.5" stroke="#6B7A9A" stroke-width="1.5" fill="none"/>
@@ -483,7 +483,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:24px 52p
     <div class="srv-r">
       <p class="srv-body">
         Built actual AI-powered apps, not just prompt wrappers. Swasth AI runs voice + text + image diagnosis through OpenAI and Gemini with real OCR for medical reports. 
-        TechBaseera is a full YOLOv8 + ByteTrack surveillance system I designed from scratch — architecture, edge deployment on Jetson Nano, real-time alerting pipeline. Patent application drafted. 
+        TechBaseera is a full YOLOv8 + ByteTrack surveillance pipeline I wrote from scratch after getting obsessed with a paper walkthrough. 
         Working with these APIs and models is genuinely exciting — I tend to pick projects where the AI part is actually doing something meaningful.
       </p>
     </div>
@@ -523,7 +523,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:24px 52p
 <div class="sw" id="projects">
   <div class="sh up">
     <div class="si">02</div>
-    <h2 class="st">Things I've<br><em>built</em></h2>
+    <h2 class="st">Things I've<br><em>built</em> <span style="font-family:var(--font-code);font-size:clamp(13px,1.5vw,18px);color:var(--text3);font-weight:400;letter-spacing:.04em;">(Projects)</span></h2>
   </div>
 
   <div class="feat up" onclick="window.open('https://github.com/ehte-01/Swasth-AI-2.0','_blank')">
@@ -569,7 +569,15 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:24px 52p
   </div>
 
   <div class="proj-rows">
-    <div class="pr up" style="cursor:default;">
+
+    <!-- Ideas & IP divider -->
+    <div style="display:flex;align-items:center;gap:16px;padding:28px 0 4px;border-top:1px solid var(--border);">
+      <span style="font-family:var(--font-code);font-size:9px;letter-spacing:.14em;text-transform:uppercase;color:#a78bfa;background:rgba(167,139,250,.08);border:1px solid rgba(167,139,250,.2);padding:3px 10px;border-radius:3px;white-space:nowrap;">Ideas & IP</span>
+      <span style="flex:1;height:1px;background:var(--border);opacity:.4;"></span>
+      <span style="font-family:var(--font-code);font-size:9px;color:var(--text3);letter-spacing:.08em;">Patent application drafted — not yet a codebase</span>
+    </div>
+
+    <div class="pr up" style="cursor:default;opacity:.85;">
       <div class="pr-meta"><span class="pr-num">02</span><span class="pr-lang" style="color:#a78bfa;">Patent</span></div>
       <div class="pr-thumb">
         <svg viewBox="0 0 170 76" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="xMidYMid slice">
@@ -589,10 +597,10 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:24px 52p
       </div>
       <div class="pr-body">
         <div class="pr-name">TechBaseera — Edge AI Security <span style="font-family:var(--font-code);font-size:9px;color:#a78bfa;background:rgba(167,139,250,.1);border:1px solid rgba(167,139,250,.25);padding:2px 8px;border-radius:3px;margin-left:8px;vertical-align:middle;">Patent Application</span></div>
-        <p class="pr-desc">Designed the full architecture for a multi-camera AI surveillance system — YOLOv8 + ByteTrack Re-ID, real-time alerts over WhatsApp/Email/Telegram, GSM fallback, edge deployment on Jetson Nano. Patent application drafted. Architecture and IP documented.</p>
-        <p class="pr-comment">// designed the full system architecture and filed the patent — building it next</p>
+        <p class="pr-desc">Designed the full architecture for a multi-camera AI surveillance system — YOLOv8 + ByteTrack Re-ID, real-time alerts over WhatsApp/Email/Telegram, GSM fallback, edge deployment on Jetson Nano. Full system design and IP documented.</p>
+        <p class="pr-comment">// designed the architecture, drafted the patent — implementation is next</p>
       </div>
-      <div class="pr-link-col"><span class="pr-link" style="color:#a78bfa;opacity:.7;">Patent ©</span></div>
+      <div class="pr-link-col"><span class="pr-link" style="color:#a78bfa;opacity:.8;cursor:default;">Patent ©</span></div>
     </div>
 
     <div class="pr up" onclick="window.open('https://github.com/ehte-01/AI-College-Monitoring-System','_blank')">
