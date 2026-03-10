@@ -187,19 +187,13 @@ nav.shade{box-shadow:0 2px 28px rgba(0,0,0,.35);}
 .pr-comment{font-family:var(--font-code);font-size:10px;color:var(--text3);margin-top:5px;font-style:italic;}
 .pr-link-col{display:flex;align-items:center;justify-content:center;padding:18px 22px;border-left:1px solid var(--border);}
 .pr-link{font-family:var(--font-code);font-size:10px;color:var(--text2);white-space:nowrap;opacity:.6;transition:all .18s;}
+/* Project Screenshots */
 .proj-screenshots{border:1px solid var(--border);border-top:none;padding:20px 24px 24px;background:var(--bg);}
 .proj-ss-label{font-family:var(--font-code);font-size:9px;color:var(--accent);letter-spacing:.1em;text-transform:uppercase;margin-bottom:14px;opacity:.75;}
 .proj-ss-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
+.proj-ss-grid--3{grid-template-columns:1fr 1fr 1fr;}
 .proj-ss-item{display:flex;flex-direction:column;gap:6px;}
 .proj-ss-img{width:100%;border-radius:3px;border:1px solid var(--border);display:block;transition:border-color .2s,box-shadow .2s;cursor:pointer;}
-.proj-ss-img:hover{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent);}
-.proj-ss-tag{font-family:var(--font-code);font-size:9px;color:var(--text3);letter-spacing:.04em;}
-/* AI-CMS Project Screenshots */
-.proj-screenshots{border:1px solid var(--border);border-top:none;padding:20px 24px 24px;background:var(--bg);}
-.proj-ss-label{font-family:var(--font-code);font-size:9px;color:var(--accent);letter-spacing:.1em;text-transform:uppercase;margin-bottom:14px;opacity:.75;}
-.proj-ss-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;}
-.proj-ss-item{display:flex;flex-direction:column;gap:6px;}
-.proj-ss-img{width:100%;border-radius:3px;border:1px solid var(--border);display:block;transition:border-color .2s,box-shadow .2s;}
 .proj-ss-img:hover{border-color:var(--accent);box-shadow:0 0 0 1px var(--accent);}
 .proj-ss-tag{font-family:var(--font-code);font-size:9px;color:var(--text3);letter-spacing:.04em;}
 
@@ -695,6 +689,24 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:24px 52p
       <div class="pr-link-col-v">
         <a href="http://139.59.26.156" target="_blank" class="pr-link-live">⬡ Live Demo →</a>
         <a href="https://github.com/ehte-01/Magento-2-e-Commercial-Website" target="_blank" class="pr-link-gh">GitHub →</a>
+      </div>
+    </div>
+
+    <div class="proj-screenshots">
+      <div class="proj-ss-label">Live Deployment · Thrift Commerce Admin Panel</div>
+      <div class="proj-ss-grid proj-ss-grid--3">
+        <div class="proj-ss-item">
+          <img class="proj-ss-img" src="magento-dashboard.png" alt="Thrift Commerce — Admin Dashboard" loading="lazy"/>
+          <span class="proj-ss-tag">// dashboard · lifetime sales · order analytics</span>
+        </div>
+        <div class="proj-ss-item">
+          <img class="proj-ss-img" src="magento-products.png" alt="Thrift Commerce — Product Catalog" loading="lazy"/>
+          <span class="proj-ss-tag">// product grid · catalog management · custom theme</span>
+        </div>
+        <div class="proj-ss-item">
+          <img class="proj-ss-img" src="magento-login.png" alt="Thrift Commerce — Admin Login" loading="lazy"/>
+          <span class="proj-ss-tag">// custom login · split-layout · branded experience</span>
+        </div>
       </div>
     </div>
 
