@@ -703,7 +703,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:24px 52p
         <div class="form-title">Send a message</div>
         <div class="form-note">Your message goes straight to my inbox. I'll respond within 24 hours.</div>
 
-        <form name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="cform">
+        <form name="contact" action="/" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="cform">
           <input type="hidden" name="form-name" value="contact">
           <p style="display:none"><label>Leave empty: <input name="bot-field"></label></p>
 
@@ -792,27 +792,29 @@ var form = document.getElementById('cform');
 var btn  = document.getElementById('fsub');
 var ok   = document.getElementById('fsuccess');
 
-form && form.addEventListener('submit', async function(e){
+if(form) form.addEventListener('submit', async function(e){
   e.preventDefault();
   btn.disabled = true;
   btn.textContent = 'Sending...';
   try {
     var fd = new FormData(form);
-    var res = await fetch('/', {
+    var body = new URLSearchParams(fd).toString();
+    var res = await fetch(form.action || '/', {
       method: 'POST',
       headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-      body: new URLSearchParams(fd).toString()
+      body: body
     });
     if(res.ok){
       form.style.display = 'none';
       ok.style.display = 'block';
     } else {
-      btn.textContent = 'Error — try again';
+      btn.textContent = 'Failed (' + res.status + ') — try again';
       btn.disabled = false;
     }
   } catch(err){
-    btn.textContent = 'Error — try again';
-    btn.disabled = false;
+    /* Fallback: submit form normally if AJAX fails */
+    form.removeEventListener('submit', arguments.callee);
+    form.submit();
   }
 });
 </script>
