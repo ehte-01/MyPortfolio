@@ -172,11 +172,22 @@ nav.shade{box-shadow:0 2px 28px rgba(0,0,0,.35);}
 /* screenshots gallery */
 .feat-gallery{padding:0 44px 32px;}
 .feat-gallery-label{font-family:var(--font-code);font-size:9px;color:var(--accent);letter-spacing:.1em;text-transform:uppercase;margin-bottom:14px;opacity:.7;}
-.feat-gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;}
-.feat-gallery-item{position:relative;border-radius:8px;overflow:hidden;border:1px solid var(--border);transition:border-color .25s,transform .25s,box-shadow .25s;}
-.feat-gallery-item:hover{border-color:var(--accent);transform:translateY(-3px);box-shadow:0 12px 32px rgba(0,0,0,.4);}
+.feat-gallery-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;max-width:680px;}
+.feat-gallery-item{position:relative;border-radius:6px;overflow:hidden;border:1px solid var(--border);transition:border-color .25s,transform .25s,box-shadow .25s;cursor:pointer;}
+.feat-gallery-item:hover{border-color:var(--accent);transform:translateY(-2px);box-shadow:0 8px 24px rgba(0,0,0,.35);}
 .feat-gallery-item img{width:100%;display:block;aspect-ratio:16/10;object-fit:cover;}
-.feat-gallery-cap{position:absolute;bottom:0;left:0;right:0;padding:8px 12px;background:linear-gradient(transparent,rgba(8,9,15,.85));font-family:var(--font-code);font-size:9px;color:var(--text2);letter-spacing:.03em;}
+.feat-gallery-cap{position:absolute;bottom:0;left:0;right:0;padding:6px 10px;background:linear-gradient(transparent,rgba(8,9,15,.85));font-family:var(--font-code);font-size:8px;color:var(--text2);letter-spacing:.03em;}
+.feat-gallery-item::after{content:'\1F50D';position:absolute;top:50%;left:50%;transform:translate(-50%,-50%) scale(0);font-size:20px;opacity:0;transition:all .25s;pointer-events:none;filter:grayscale(1) brightness(2);}
+.feat-gallery-item:hover::after{transform:translate(-50%,-50%) scale(1);opacity:.7;}
+
+/* lightbox */
+.lightbox{position:fixed;inset:0;z-index:9999;background:rgba(4,5,8,.92);backdrop-filter:blur(12px);display:flex;align-items:center;justify-content:center;opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s;cursor:zoom-out;}
+.lightbox.active{opacity:1;visibility:visible;}
+.lightbox img{max-width:88vw;max-height:85vh;border-radius:8px;border:1px solid var(--border2);box-shadow:0 24px 80px rgba(0,0,0,.6);transform:scale(.92);transition:transform .3s;object-fit:contain;}
+.lightbox.active img{transform:scale(1);}
+.lightbox-cap{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);font-family:var(--font-code);font-size:11px;color:var(--text2);letter-spacing:.06em;text-transform:uppercase;background:var(--surface);padding:6px 16px;border-radius:100px;border:1px solid var(--border);}
+.lightbox-close{position:absolute;top:24px;right:28px;width:36px;height:36px;border:1px solid var(--border2);border-radius:50%;background:var(--surface);color:var(--text2);font-size:16px;display:flex;align-items:center;justify-content:center;cursor:pointer;transition:all .2s;}
+.lightbox-close:hover{background:var(--accent);color:var(--bg);border-color:var(--accent);}
 
 /* featured footer */
 .feat-foot{display:flex;justify-content:space-between;align-items:center;padding:14px 44px;border-top:1px solid var(--border);background:rgba(8,9,15,.4);}
@@ -499,21 +510,28 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:24px 52p
     </div>
 
     <div class="feat-gallery">
-      <div class="feat-gallery-label">Admin Interface · Screenshots</div>
+      <div class="feat-gallery-label">Admin Interface · Screenshots <span style="opacity:.4;font-size:8px;margin-left:4px;">click to expand</span></div>
       <div class="feat-gallery-grid">
-        <div class="feat-gallery-item">
+        <div class="feat-gallery-item" onclick="openLightbox(this)">
           <img src="magento-dashboard.png" alt="Thrift Commerce — Custom Admin Dashboard" loading="lazy"/>
           <div class="feat-gallery-cap">Custom Dashboard</div>
         </div>
-        <div class="feat-gallery-item">
+        <div class="feat-gallery-item" onclick="openLightbox(this)">
           <img src="magento-products.png" alt="Thrift Commerce — Product Catalog" loading="lazy"/>
           <div class="feat-gallery-cap">Product Catalog</div>
         </div>
-        <div class="feat-gallery-item">
+        <div class="feat-gallery-item" onclick="openLightbox(this)">
           <img src="magento-login.png" alt="Thrift Commerce — Branded Admin Login" loading="lazy"/>
           <div class="feat-gallery-cap">Branded Login</div>
         </div>
       </div>
+    </div>
+
+    <!-- Lightbox -->
+    <div class="lightbox" id="lightbox" onclick="closeLightbox()">
+      <button class="lightbox-close" onclick="closeLightbox()">✕</button>
+      <img id="lb-img" src="" alt=""/>
+      <div class="lightbox-cap" id="lb-cap"></div>
     </div>
 
     <div class="feat-foot">
@@ -713,6 +731,24 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:24px 52p
 </footer>
 
 <script>
+/* lightbox */
+function openLightbox(el){
+  var img = el.querySelector('img');
+  var cap = el.querySelector('.feat-gallery-cap');
+  var lb = document.getElementById('lightbox');
+  document.getElementById('lb-img').src = img.src;
+  document.getElementById('lb-img').alt = img.alt;
+  document.getElementById('lb-cap').textContent = cap ? cap.textContent : '';
+  lb.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+function closeLightbox(){
+  var lb = document.getElementById('lightbox');
+  lb.classList.remove('active');
+  document.body.style.overflow = '';
+}
+document.addEventListener('keydown', function(e){ if(e.key === 'Escape') closeLightbox(); });
+
 /* email — built in JS to prevent scraping */
 (function(){
   var u='infoehtesham7886';
