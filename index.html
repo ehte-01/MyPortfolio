@@ -703,7 +703,7 @@ footer{background:var(--bg2);border-top:1px solid var(--border);padding:24px 52p
         <div class="form-title">Send a message</div>
         <div class="form-note">Your message goes straight to my inbox. I'll respond within 24 hours.</div>
 
-        <form name="contact" action="/" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="cform">
+        <form id="cform">
           <input type="hidden" name="form-name" value="contact">
           <p style="display:none"><label>Leave empty: <input name="bot-field"></label></p>
 
@@ -798,12 +798,16 @@ if(form) form.addEventListener('submit', async function(e){
   btn.textContent = 'Sending...';
   try {
     var fd = new FormData(form);
-    var body = new URLSearchParams(fd).toString();
-    var res = await fetch(form.action || '/', {
-      method: 'POST',
-      headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-      body: body
-    });
+fd.append('access_key', '564e9e5e-ee90-4992-babb-9d6289150618');
+var res = await fetch('https://api.web3forms.com/submit', {
+  method: 'POST',
+  body: fd
+});var fd = new FormData(form);
+fd.append('access_key', '564e9e5e-ee90-4992-babb-9d6289150618');
+var res = await fetch('https://api.web3forms.com/submit', {
+  method: 'POST',
+  body: fd
+});
     if(res.ok){
       form.style.display = 'none';
       ok.style.display = 'block';
